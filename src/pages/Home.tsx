@@ -1,15 +1,15 @@
-import React, { FC } from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import getShopItems from "../state/actions/shopItems";
 
 import PopUp from "../components/utils/PopUp/PopUp";
 
-import useFetch from "../hooks/useFetch";
+const Home: React.FC = () => {
+  const dispatch = useDispatch();
 
-import { IShopItems } from "../interfaces/interfaces";
-
-const Home: FC = () => {
-  const { data, loading, error } = useFetch<IShopItems[]>(
-    "https://fakestoreapi.com/products"
-  );
+  useEffect(() => {
+    dispatch(getShopItems());
+  });
 
   return <div></div>;
 };
