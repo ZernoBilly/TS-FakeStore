@@ -1,6 +1,6 @@
 import { constants } from "../constants";
 
-import { ShopItems, ShopItemsAction } from "../types";
+import { ShopItemsAction } from "../types";
 
 const initState = {
   id: null,

@@ -12,21 +12,11 @@ export type ShopItems = {
   amount?: number;
 };
 
+export type ShopItemsList = {
+  ShopItemsList: ShopItems[];
+};
+
 export type ShopItemsAction = {
   type: string;
   payload?: ShopItems[];
-};
-
-export type initState = {
-  id: null;
-  title: null;
-  price: null;
-  description: null;
-  category: null;
-  image: null;
-  rating: {
-    rate: null;
-    count: null;
-  };
-  amount?: null;
 };

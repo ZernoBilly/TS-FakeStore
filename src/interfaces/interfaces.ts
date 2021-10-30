@@ -11,3 +11,7 @@ export interface IShopItems {
   };
   amount?: number;
 }
+
+export interface IShopItemsList {
+  ShopItemsList: IShopItems;
+}
