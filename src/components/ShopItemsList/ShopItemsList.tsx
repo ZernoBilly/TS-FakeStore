@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 import ShopItem from "./ShopItem/ShopItem";
 
+import { ItemListContainer } from "./styled";
+
 import { IShopItems } from "../../interfaces/interfaces";
 
 import { State } from "../../state/combinedReducers";
@@ -12,15 +14,11 @@ const ShopItemsList: React.FC = () => {
     (state: State) => state.shopItems
   );
 
-  console.log(shopItems);
-
   return (
-    <div>
+    <ItemListContainer>
       {shopItems.length > 0 &&
-        shopItems.map((value, index) => (
-          <ShopItem key={index} shopItem={value} />
-        ))}
-    </div>
+        shopItems.map((value) => <ShopItem key={value.id} shopItem={value} />)}
+    </ItemListContainer>
   );
 };
 

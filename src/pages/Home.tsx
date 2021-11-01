@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import getShopItems from "../state/actions/shopItems";
 
 import ShopItemsList from "../components/ShopItemsList/ShopItemsList";
+import SideBar from "../components/SideBar/SideBar";
+import PopUp from "../components/PopUp/PopUp";
+
+import { MainContainer } from "./styled";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -11,10 +15,14 @@ const Home: React.FC = () => {
     dispatch(getShopItems());
   }, []);
 
+  const popUpRef = useRef<React.MutableRefObject<any>>(null);
+
   return (
-    <div>
+    <MainContainer>
+      <PopUp ref={popUpRef} message={"Alert"} />
       <ShopItemsList />
-    </div>
+      <SideBar />
+    </MainContainer>
   );
 };
 

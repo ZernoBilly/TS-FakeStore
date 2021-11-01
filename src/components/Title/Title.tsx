@@ -1,12 +1,8 @@
 import React from "react";
 
-import FlexWrapper from "../../helpers/FlexWrapper/FlexWrapper";
-
 const Title = () => {
   return;
-  <>
-    <FlexWrapper justifyContent={"center"}></FlexWrapper>;
-  </>;
+  <div></div>;
 };
 
 export default Title;
