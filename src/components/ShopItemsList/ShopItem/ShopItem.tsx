@@ -1,4 +1,6 @@
 import React from "react";
+import { addCartItem } from "../../../state/actions/cartItems";
+import useActions from "../../../hooks/useActions";
 
 import Button from "../../Button/Button";
 
@@ -11,6 +13,8 @@ type ShopItemProps = {
 };
 
 const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
+  const addToCartHandler = useActions(addCartItem);
+
   return (
     <ItemContainer>
       <ItemTitle>
@@ -20,7 +24,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
       <ImageContainer>
         <img src={shopItem.image} alt={shopItem.title} />
       </ImageContainer>
-      <Button handleClick={() => alert("Button Clicked")} />
+      <Button handleClick={() => addToCartHandler(shopItem)} label={"Add"} />
     </ItemContainer>
   );
 };

@@ -1,9 +1,4 @@
-import React, {
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  useState,
-} from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
 import { PopUpContainer, PopUpText } from "./styled";
 

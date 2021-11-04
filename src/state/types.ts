@@ -2,7 +2,7 @@ import { constants } from "./constants";
 
 import { IShopItems } from "../interfaces/interfaces";
 
-//Shop actions
+//Shop action types
 
 export type ShopItemsList = {
   ShopItemsList: IShopItems[];
@@ -13,7 +13,7 @@ export type ShopItemsAction = {
   payload?: IShopItems[];
 };
 
-//Cart actions
+//Cart action types
 interface AddCartItemAction {
   type: constants.ADD_CART_ITEM;
   payload: IShopItems;
