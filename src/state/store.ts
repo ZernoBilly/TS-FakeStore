@@ -8,6 +8,4 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-export type State = ReturnType<typeof reducers>;
-
 export default store;

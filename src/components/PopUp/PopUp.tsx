@@ -1,6 +1,18 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 
-const PopUp = forwardRef((props: { message: string }, ref) => {
+import { PopUpContainer, PopUpText } from "./styled";
+
+type PopUpProps = {
+  message: string;
+  type: string;
+};
+
+const PopUp = forwardRef<PopUpProps, any>(({ message, type }, ref: any) => {
   const [showPopUp, setShowPopUp] = useState<boolean>(false);
 
   useImperativeHandle(ref, () => ({
@@ -13,9 +25,9 @@ const PopUp = forwardRef((props: { message: string }, ref) => {
   }));
 
   return (
-    <div>
-      <h3>{props.message}</h3>
-    </div>
+    <PopUpContainer visibility={showPopUp ? "visible" : "hidden"}>
+      <PopUpText>{showPopUp && message}</PopUpText>
+    </PopUpContainer>
   );
 });
 

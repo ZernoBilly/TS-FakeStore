@@ -1,22 +1,35 @@
-export type ShopItems = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-  amount?: number;
-};
+import { constants } from "./constants";
+
+import { IShopItems } from "../interfaces/interfaces";
+
+//Shop actions
 
 export type ShopItemsList = {
-  ShopItemsList: ShopItems[];
+  ShopItemsList: IShopItems[];
 };
 
 export type ShopItemsAction = {
   type: string;
-  payload?: ShopItems[];
+  payload?: IShopItems[];
 };
+
+//Cart actions
+interface AddCartItemAction {
+  type: constants.ADD_CART_ITEM;
+  payload: IShopItems;
+}
+
+interface updateCartItemAction {
+  type: constants.UPDATE_CART_ITEM;
+  payload: IShopItems;
+}
+
+interface deleteCartItemAction {
+  type: constants.DELETE_CART_ITEM;
+  payload: number;
+}
+
+export type CartItemsAction =
+  | AddCartItemAction
+  | updateCartItemAction
+  | deleteCartItemAction;

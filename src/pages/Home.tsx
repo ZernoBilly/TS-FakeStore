@@ -15,11 +15,13 @@ const Home: React.FC = () => {
     dispatch(getShopItems());
   }, []);
 
-  const popUpRef = useRef<React.MutableRefObject<any>>(null);
+  const showPopUpRef = useRef<any>(null);
 
   return (
     <MainContainer>
-      <PopUp ref={popUpRef} message={"Alert"} />
+      <PopUp ref={showPopUpRef} message={"Alert"} type={"Error"} />
+
+      <button onClick={() => showPopUpRef.current?.show()}></button>
       <ShopItemsList />
       <SideBar />
     </MainContainer>
