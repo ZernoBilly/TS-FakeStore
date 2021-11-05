@@ -6,17 +6,18 @@ import CartItem from "./CartItem/CartItem";
 
 import { IShopItems } from "../../interfaces/interfaces";
 
-import { CartContainer } from "./styled";
+import { CartListContainer } from "./styled";
 
 const CartItemsList = () => {
   const cartItems: IShopItems[] = useSelector(
     (state: State) => state.cartItems
   );
+
   return (
-    <CartContainer>
+    <CartListContainer>
       {cartItems.length > 0 &&
         cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
-    </CartContainer>
+    </CartListContainer>
   );
 };
 

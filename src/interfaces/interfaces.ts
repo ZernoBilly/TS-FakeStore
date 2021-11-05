@@ -9,9 +9,9 @@ export interface IShopItems {
     rate: number;
     count: number;
   };
-  amount?: number;
+  amount: number;
 }
 
 export interface IShopItemsList {
-  ShopItemsList: IShopItems;
+  ShopItemsList: IShopItems[];
 }
