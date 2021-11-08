@@ -7,10 +7,17 @@ import { deleteCartItem } from "../../../state/actions/cartItems";
 import { fixedTotalPrice } from "../../../utils/functions";
 
 import IconButton from "../../IconButton/IconButton";
+import Button from "../../Button/Button";
 
 import { IShopItems } from "../../../interfaces/interfaces";
 
-import { CartItemContainer } from "./styled";
+import {
+  CartItemContainer,
+  AmountContainer,
+  PriceTag,
+  PiecesTag,
+  ItemTitle,
+} from "./styled";
 
 type CartItemProps = {
   cartItem: IShopItems;
@@ -23,22 +30,34 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
 
   return (
     <CartItemContainer>
-      <p>
+      <ItemTitle>
         {cartItem.title} {cartItem.amount}
-      </p>
-      <IconButton
+      </ItemTitle>
+
+      <AmountContainer>
+        <button onClick={() => cartItem.amount > 1 && decreaseAmount()}>
+          -
+        </button>
+
+        <PiecesTag>{cartItem.amount}</PiecesTag>
+
+        <button
+          onClick={() => {
+            increaseAmount();
+          }}
+        >
+          +
+        </button>
+
+        <PriceTag>
+          {fixedTotalPrice(cartItem.price, cartItem.amount)} €
+        </PriceTag>
+      </AmountContainer>
+      <Button
         handleClick={() => removeItemHandler(cartItem.id)}
         label={"remove"}
-      ></IconButton>
-      <button
-        onClick={() => {
-          increaseAmount();
-        }}
-      >
-        +
-      </button>
-      <button onClick={() => cartItem.amount > 1 && decreaseAmount()}>-</button>
-      <p>{fixedTotalPrice(cartItem.price, cartItem.amount)}</p>
+        type={"remove"}
+      ></Button>
     </CartItemContainer>
   );
 };

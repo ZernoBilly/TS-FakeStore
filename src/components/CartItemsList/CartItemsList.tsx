@@ -6,7 +6,7 @@ import CartItem from "./CartItem/CartItem";
 
 import { IShopItems } from "../../interfaces/interfaces";
 
-import { CartListContainer } from "./styled";
+import { CartListContainer, StickyContainer } from "./styled";
 
 const CartItemsList = () => {
   const cartItems: IShopItems[] = useSelector(
@@ -15,8 +15,10 @@ const CartItemsList = () => {
 
   return (
     <CartListContainer>
-      {cartItems.length > 0 &&
-        cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
+      <StickyContainer>
+        {cartItems.length > 0 &&
+          cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
+      </StickyContainer>
     </CartListContainer>
   );
 };
