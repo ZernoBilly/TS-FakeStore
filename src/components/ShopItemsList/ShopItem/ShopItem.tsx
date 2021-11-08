@@ -3,8 +3,10 @@ import { addCartItem } from "../../../state/actions/cartItems";
 import useActions from "../../../hooks/useActions";
 import useCart from "../../../hooks/useCart";
 import useAmount from "../../../hooks/useAmount";
+import usePopUp from "../../../hooks/usePopUp";
 
 import Button from "../../Button/Button";
+import PopUp from "../../PopUp/PopUp";
 
 import { IShopItems } from "../../../interfaces/interfaces";
 
@@ -17,7 +19,7 @@ type ShopItemProps = {
 const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
   const addToCartHandler = useActions(addCartItem);
   const isItemInCart = useCart(shopItem.id);
-  const arr = useAmount(shopItem, 1);
+  const showPopUpRef = usePopUp(null);
 
   return (
     <ItemContainer>
@@ -29,10 +31,14 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
       </ItemTitle>
       <PriceTag>{`${shopItem.price} €`}</PriceTag>
       <Button
-        handleClick={() => !isItemInCart && addToCartHandler(shopItem)}
+        handleClick={() => {
+          !isItemInCart && addToCartHandler(shopItem);
+          !isItemInCart && showPopUpRef.current.show();
+        }}
         label={"Add"}
         type={"add"}
       />
+      <PopUp ref={showPopUpRef} message={"Item added to cart"} type={"add"} />
     </ItemContainer>
   );
 };

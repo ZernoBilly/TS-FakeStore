@@ -10,11 +10,14 @@ export const CartListContainer = styled.div`
   height: 100%;
 `;
 export const StickyContainer = styled.div`
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  padding-right: 6rem;
+  padding-right: 3rem;
+  overflow: visible;
 
   @media ${({ theme }) => theme.mediaQueries.md} {
     padding-right: 0.5rem;

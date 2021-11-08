@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 type PopUpContainerProps = {
   visibility: string;
+  backgroundColor: string;
 };
 
 export const PopUpContainer = styled.div<PopUpContainerProps>`
   position: fixed;
-  width: 5rem;
-  height: 2rem;
-  background-color: gray;
-  bottom: 1rem;
-  left: 1rem;
+
+  background-color: ${(props) =>
+    props.backgroundColor === "add" ? props.theme.palette.primary.light : ""};
+  top: 1rem;
+  right: 35%;
   visibility: ${(props) => props.visibility};
   display: flex;
   justify-content: center;

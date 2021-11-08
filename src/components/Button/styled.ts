@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
     props.color === "add"
       ? ({ theme }) => theme.palette.primary.main
       : ({ theme }) => theme.palette.highlight.light};
-  margin: 1rem;
+  margin: 0 1rem 0.5rem 1rem;
 
   p {
     margin: 0.2rem;

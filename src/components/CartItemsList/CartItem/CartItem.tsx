@@ -35,19 +35,25 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
       </ItemTitle>
 
       <AmountContainer>
-        <button onClick={() => cartItem.amount > 1 && decreaseAmount()}>
+        <IconButton
+          handleClick={() => cartItem.amount > 1 && decreaseAmount()}
+          type={"decrease"}
+          shape={"square"}
+        >
           -
-        </button>
+        </IconButton>
 
         <PiecesTag>{cartItem.amount}</PiecesTag>
 
-        <button
-          onClick={() => {
+        <IconButton
+          handleClick={() => {
             increaseAmount();
           }}
+          type={"increase"}
+          shape={"square"}
         >
           +
-        </button>
+        </IconButton>
 
         <PriceTag>
           {fixedTotalPrice(cartItem.price, cartItem.amount)} €

@@ -2,22 +2,34 @@ import React from "react";
 
 import { StyledIconButton } from "./styled";
 
-interface changeAmount {
-  type: "increase" | "decrease";
-}
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-interface remove {
-  type: "remove";
-}
-
-type IconBttonProps = {
+type IconButtonProps = {
   handleClick: () => void;
   label?: string;
-  type?: remove | changeAmount;
-};
+  type: string;
+} & (
+  | { shape: "circle"; height?: string; width?: string }
+  | { shape: "square"; height?: string; width?: string }
+);
 
-const IconButton: React.FC<IconBttonProps> = ({ handleClick, label, type }) => {
-  return <StyledIconButton onClick={handleClick}>{label}</StyledIconButton>;
+const IconButton: React.FC<IconButtonProps> = ({
+  handleClick,
+  label,
+  shape,
+  height,
+  width,
+  type,
+}) => {
+  return (
+    <StyledIconButton onClick={handleClick}>
+      {type === "increase" ? (
+        <AiOutlinePlus style={{ height: "100%" }}></AiOutlinePlus>
+      ) : (
+        <AiOutlineMinus></AiOutlineMinus>
+      )}
+    </StyledIconButton>
+  );
 };
 
 export default IconButton;

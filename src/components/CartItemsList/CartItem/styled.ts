@@ -11,7 +11,7 @@ export const CartItemContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing.small};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;
-  min-width: 40rem;
+  min-width: 30rem;
 
   @media ${({ theme }) => theme.mediaQueries.md} {
     min-width: 11rem;
@@ -19,7 +19,7 @@ export const CartItemContainer = styled.div`
 `;
 
 export const ItemTitle = styled.h4`
-  padding: 0 1rem 0 1rem;
+  margin: 0.5rem 1rem 0 1rem;
 `;
 
 export const AmountContainer = styled.div`
@@ -31,12 +31,14 @@ export const AmountContainer = styled.div`
 
 export const PriceTag = styled.p`
   padding: 0 1rem 0 1rem;
+  margin: 0.5rem 0 0.8rem 0;
   color: ${({ theme }) => theme.palette.secondary.dark};
   font-weight: 600;
 `;
 
 export const PiecesTag = styled.p`
   padding: 0 1rem 0 1rem;
+  margin: 0.5rem 0 0.8rem 0;
   color: ${({ theme }) => theme.palette.secondary.dark};
   font-weight: 600;
 `;

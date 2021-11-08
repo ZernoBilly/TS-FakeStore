@@ -20,7 +20,10 @@ const PopUp = forwardRef<PopUpProps, any>(({ message, type }, ref: any) => {
   }));
 
   return (
-    <PopUpContainer visibility={showPopUp ? "visible" : "hidden"}>
+    <PopUpContainer
+      visibility={showPopUp ? "visible" : "hidden"}
+      backgroundColor={type}
+    >
       <PopUpText>{showPopUp && message}</PopUpText>
     </PopUpContainer>
   );
