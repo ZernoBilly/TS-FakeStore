@@ -7,6 +7,6 @@ export const CartItemContainer = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.palette.secondary.main};
   margin-top: ${({ theme }) => theme.spacing.small};
-  padding-right: ${({ theme }) => theme.spacing.medium};
+
   overflow: hidden;
 `;

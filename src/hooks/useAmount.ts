@@ -1,6 +1,14 @@
 import { IShopItems } from "../interfaces/interfaces";
-import { useDispatch } from "react-redux";
+import useActions from "./useActions";
+import { updateCartItem } from "../state/actions/cartItems";
 
-const useAmount = (item: IShopItems, changeAmount: number) => {};
+const useAmount = (item: IShopItems, amount: number) => {
+  const updateAmountHandler = useActions(updateCartItem);
+
+  const updateAmount = () => {
+    updateAmountHandler({ ...item, amount: item.amount + amount });
+  };
+  return updateAmount;
+};
 
 export default useAmount;

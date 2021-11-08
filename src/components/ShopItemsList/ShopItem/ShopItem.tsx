@@ -2,7 +2,7 @@ import React from "react";
 import { addCartItem } from "../../../state/actions/cartItems";
 import useActions from "../../../hooks/useActions";
 import useCart from "../../../hooks/useCart";
-import { useDispatch } from "react-redux";
+import useAmount from "../../../hooks/useAmount";
 
 import Button from "../../Button/Button";
 
@@ -17,8 +17,7 @@ type ShopItemProps = {
 const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
   const addToCartHandler = useActions(addCartItem);
   const isItemInCart = useCart(shopItem.id);
-
-  const handleAmount = () => {};
+  const arr = useAmount(shopItem, 1);
 
   return (
     <ItemContainer>
@@ -32,6 +31,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
       <Button
         handleClick={() => !isItemInCart && addToCartHandler(shopItem)}
         label={"Add"}
+        type={"add"}
       />
     </ItemContainer>
   );

@@ -13,7 +13,7 @@ const initState = {
     rate: null,
     count: null,
   },
-  amount: null,
+  amount: 1,
 };
 
 const shopItemReducer = (state = initState, action: ShopItemsAction) => {

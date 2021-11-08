@@ -11,6 +11,6 @@ export const updateCartItem = (item: IShopItems) => (dispatch: Dispatch) => {
   dispatch({ type: constants.UPDATE_CART_ITEM, payload: item });
 };
 
-export const deleteCartItem = (id: IShopItems) => (dispatch: Dispatch) => {
+export const deleteCartItem = (id: number) => (dispatch: Dispatch) => {
   dispatch({ type: constants.DELETE_CART_ITEM, payload: id });
 };
