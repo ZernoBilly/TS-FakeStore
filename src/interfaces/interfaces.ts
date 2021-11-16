@@ -10,6 +10,11 @@ export interface IShopItems {
     count: number;
   };
   amount: number;
+  discount?: {
+    onSale: boolean;
+    discount: number;
+    discountedPrice: number;
+  };
 }
 
 export interface IShopItemsList {

@@ -8,10 +8,17 @@ export type ShopItemsList = {
   ShopItemsList: IShopItems[];
 };
 
-export type ShopItemsAction = {
-  type: string;
-  payload?: IShopItems[];
-};
+interface updateShopItemAction {
+  type: constants.UPDATE_CART_ITEM;
+  payload: IShopItems;
+}
+
+interface getAllShopItems {
+  type: constants.GET_ALL_SHOPITEMS;
+  payload: IShopItems[];
+}
+
+export type ShopItemsAction = getAllShopItems | updateCartItemAction;
 
 //Cart action types
 interface AddCartItemAction {

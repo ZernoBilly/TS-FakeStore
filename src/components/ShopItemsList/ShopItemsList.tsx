@@ -16,8 +16,9 @@ const ShopItemsList: React.FC = () => {
 
   return (
     <ItemListContainer>
-      {shopItems.length > 0 &&
-        shopItems.map((value) => <ShopItem key={value.id} shopItem={value} />)}
+      {shopItems.length > 0
+        ? shopItems.map((value) => <ShopItem key={value.id} shopItem={value} />)
+        : "Loading"}
     </ItemListContainer>
   );
 };

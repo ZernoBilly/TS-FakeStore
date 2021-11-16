@@ -1,10 +1,11 @@
 import { constants } from "../constants";
 import { Dispatch } from "redux";
 import axios from "axios";
+import { IShopItems } from "../../interfaces/interfaces";
 
 import { url } from "../api";
 
-const getShopItems = () => async (dispatch: Dispatch) => {
+export const getShopItems = () => async (dispatch: Dispatch) => {
   try {
     const { data } = await axios.get(url.GET_ALL);
     dispatch({ type: constants.GET_ALL_SHOPITEMS, payload: data });
@@ -12,4 +13,7 @@ const getShopItems = () => async (dispatch: Dispatch) => {
     console.log(error);
   }
 };
-export default getShopItems;
+
+export const updateShopItem = (item: IShopItems) => (dispatch: Dispatch) => {
+  dispatch({ type: constants.UPDATE_SHOP_ITEM, payload: item });
+};

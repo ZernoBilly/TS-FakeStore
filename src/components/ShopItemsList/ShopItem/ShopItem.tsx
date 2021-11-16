@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { addCartItem } from "../../../state/actions/cartItems";
 import useActions from "../../../hooks/useActions";
 import useCart from "../../../hooks/useCart";
-import useAmount from "../../../hooks/useAmount";
 import usePopUp from "../../../hooks/usePopUp";
+import useDiscount from "../../../hooks/useDiscount";
 
 import Button from "../../Button/Button";
 import PopUp from "../../PopUp/PopUp";
@@ -20,6 +20,15 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
   const addToCartHandler = useActions(addCartItem);
   const isItemInCart = useCart(shopItem.id);
   const showPopUpRef = usePopUp(null);
+  const {
+    onSale,
+    setOnSale,
+    setDiscountAmount,
+    discountAmount,
+    discountedPrice,
+  } = useDiscount(shopItem);
+
+  console.log(shopItem, onSale);
 
   return (
     <ItemContainer>
@@ -38,6 +47,11 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
         label={"Add"}
         type={"add"}
       />
+      <p>{discountedPrice}</p>
+      <button onClick={() => setOnSale(true)}>set discount</button>
+      <button onClick={() => setOnSale(false)}>remove discount</button>
+      <button onClick={() => setDiscountAmount(discountAmount + 1)}>+</button>
+      <button>-</button>
       <PopUp ref={showPopUpRef} message={"Item added to cart"} type={"add"} />
     </ItemContainer>
   );
