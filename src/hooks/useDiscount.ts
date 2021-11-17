@@ -1,19 +1,40 @@
 import { IShopItems } from "../interfaces/interfaces";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import useActions from "./useActions";
+import { updateShopItem } from "../state/actions/shopItems";
 
 const useDiscount = (item: IShopItems) => {
-  const [onSale, setOnSale] = useState<boolean>(false);
-  const [discountAmount, setDiscountAmount] = useState<number>(0);
-  const [discountedPrice, setDiscountedPrice] = useState<number>(0);
+  const updateShopItemHandler = useActions(updateShopItem);
+  const [discountAmount, setDiscountAmount] = useState<number>(
+    item.discount.discount
+  );
 
-  useEffect(() => {});
+  const setItemToSale = () => {
+    const newItem: IShopItems = {
+      ...item,
+      discount: {
+        onSale: true,
+        discount: discountAmount,
+        discountedPrice: item.price - item.price * (discountAmount / 100),
+      },
+    };
+    updateShopItemHandler(newItem);
+  };
+
+  const removeItemFromSale = () => {
+    const newItem: IShopItems = {
+      ...item,
+      discount: { onSale: false, discount: 0, discountedPrice: 0 },
+    };
+    updateShopItemHandler(newItem);
+    setDiscountAmount(0);
+  };
 
   return {
-    onSale,
-    setOnSale,
-    discountedPrice,
     discountAmount,
     setDiscountAmount,
+    setItemToSale,
+    removeItemFromSale,
   };
 };
 

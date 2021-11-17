@@ -10,10 +10,14 @@ type ShoppingCartIconProps = {
 };
 
 const ShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({ cartItems }) => {
-  console.log(cartItems);
-
   const TotalAmount = cartItems.reduce((acc, cum) => {
-    return ((acc as number) + cum.price * cum.amount) as number;
+    if (cum.discount.onSale) {
+      acc = ((acc as number) +
+        cum.discount.discountedPrice * cum.amount) as number;
+    } else {
+      acc = ((acc as number) + cum.price * cum.amount) as number;
+    }
+    return acc;
   }, 0);
 
   return (

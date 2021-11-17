@@ -7,8 +7,13 @@ import { url } from "../api";
 
 export const getShopItems = () => async (dispatch: Dispatch) => {
   try {
-    const { data } = await axios.get(url.GET_ALL);
-    dispatch({ type: constants.GET_ALL_SHOPITEMS, payload: data });
+    const { data }: any = await axios.get(url.GET_ALL);
+    const newData = await data.map((item: IShopItems) => ({
+      ...item,
+      amount: 1,
+      discount: { onSale: false, discount: 0, discountedPrice: 0 },
+    }));
+    dispatch({ type: constants.GET_ALL_SHOPITEMS, payload: newData });
   } catch (error) {
     console.log(error);
   }

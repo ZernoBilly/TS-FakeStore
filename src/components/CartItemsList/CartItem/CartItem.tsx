@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useActions from "../../../hooks/useActions";
 import useAmount from "../../../hooks/useAmount";
 
@@ -39,9 +39,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
           handleClick={() => cartItem.amount > 1 && decreaseAmount()}
           type={"decrease"}
           shape={"square"}
-        >
-          -
-        </IconButton>
+        ></IconButton>
 
         <PiecesTag>{cartItem.amount}</PiecesTag>
 
@@ -51,12 +49,16 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
           }}
           type={"increase"}
           shape={"square"}
-        >
-          +
-        </IconButton>
+        ></IconButton>
 
         <PriceTag>
-          {fixedTotalPrice(cartItem.price, cartItem.amount)} €
+          {cartItem.discount.onSale
+            ? fixedTotalPrice(
+                cartItem.discount.discountedPrice,
+                cartItem.amount
+              )
+            : fixedTotalPrice(cartItem.price, cartItem.amount)}{" "}
+          €
         </PriceTag>
       </AmountContainer>
       <Button

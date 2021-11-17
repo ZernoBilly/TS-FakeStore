@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const ItemContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 20rem;
+  overflow: hidden;
 
   margin: ${({ theme }) => theme.spacing.small};
   padding: ${({ theme }) => theme.spacing.small};

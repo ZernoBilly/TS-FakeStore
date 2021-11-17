@@ -3,13 +3,8 @@ import { constants } from "./constants";
 import { IShopItems } from "../interfaces/interfaces";
 
 //Shop action types
-
-export type ShopItemsList = {
-  ShopItemsList: IShopItems[];
-};
-
 interface updateShopItemAction {
-  type: constants.UPDATE_CART_ITEM;
+  type: constants.UPDATE_SHOP_ITEM;
   payload: IShopItems;
 }
 
@@ -18,7 +13,7 @@ interface getAllShopItems {
   payload: IShopItems[];
 }
 
-export type ShopItemsAction = getAllShopItems | updateCartItemAction;
+export type ShopItemsAction = getAllShopItems | updateShopItemAction;
 
 //Cart action types
 interface AddCartItemAction {

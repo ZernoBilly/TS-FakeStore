@@ -26,7 +26,7 @@ const shopItemReducer = (state = [], action: ShopItemsAction) => {
     case constants.GET_ALL_SHOPITEMS:
       return action.payload;
 
-    case constants.UPDATE_CART_ITEM:
+    case constants.UPDATE_SHOP_ITEM:
       return (
         state.length > 0 &&
         state.map((item: IShopItems) =>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { addCartItem } from "../../../state/actions/cartItems";
 import useActions from "../../../hooks/useActions";
 import useCart from "../../../hooks/useCart";
@@ -7,6 +7,7 @@ import useDiscount from "../../../hooks/useDiscount";
 
 import Button from "../../Button/Button";
 import PopUp from "../../PopUp/PopUp";
+import OnSaleTag from "./OnSaleTag/OnSaleTag";
 
 import { IShopItems } from "../../../interfaces/interfaces";
 
@@ -21,17 +22,17 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
   const isItemInCart = useCart(shopItem.id);
   const showPopUpRef = usePopUp(null);
   const {
-    onSale,
-    setOnSale,
-    setDiscountAmount,
     discountAmount,
-    discountedPrice,
+    setDiscountAmount,
+    setItemToSale,
+    removeItemFromSale,
   } = useDiscount(shopItem);
-
-  console.log(shopItem, onSale);
 
   return (
     <ItemContainer>
+      {shopItem.discount.onSale && (
+        <OnSaleTag discountAmount={discountAmount} />
+      )}
       <ImageContainer>
         <img src={shopItem.image} alt={shopItem.title} />
       </ImageContainer>
@@ -39,6 +40,10 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
         <h5>{shopItem.title}</h5>
       </ItemTitle>
       <PriceTag>{`${shopItem.price} €`}</PriceTag>
+      <PriceTag>
+        {shopItem.discount.onSale &&
+          `${shopItem.discount.discountedPrice.toFixed(2)} €`}
+      </PriceTag>
       <Button
         handleClick={() => {
           !isItemInCart && addToCartHandler(shopItem);
@@ -47,11 +52,30 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
         label={"Add"}
         type={"add"}
       />
-      <p>{discountedPrice}</p>
-      <button onClick={() => setOnSale(true)}>set discount</button>
-      <button onClick={() => setOnSale(false)}>remove discount</button>
+      <p>{shopItem.discount.discount}</p>
+      <p>{discountAmount}</p>
+      <button
+        onClick={() => {
+          setItemToSale();
+        }}
+      >
+        set discount
+      </button>
+      <button
+        onClick={() => {
+          removeItemFromSale();
+        }}
+      >
+        remove discount
+      </button>
       <button onClick={() => setDiscountAmount(discountAmount + 1)}>+</button>
-      <button>-</button>
+      <button
+        onClick={() =>
+          discountAmount > 0 && setDiscountAmount(discountAmount - 1)
+        }
+      >
+        -
+      </button>
       <PopUp ref={showPopUpRef} message={"Item added to cart"} type={"add"} />
     </ItemContainer>
   );

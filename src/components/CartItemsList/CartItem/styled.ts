@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../../../theme/theme";
 
 export const CartItemContainer = styled.div`
   display: flex;
