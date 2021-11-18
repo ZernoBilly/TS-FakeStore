@@ -7,6 +7,7 @@ export const CartListContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 3rem;
   height: 100%;
 `;
 export const StickyContainer = styled.div`
@@ -17,14 +18,17 @@ export const StickyContainer = styled.div`
   align-items: center;
   position: fixed;
   padding-right: 3rem;
-  overflow: visible;
+  padding-left: 0.5rem;
+  height: 100%;
+  background-color: ${({ theme }) => theme.palette.secondary.dark};
+  min-width: 30%;
 
   @media ${({ theme }) => theme.mediaQueries.md} {
-    padding-right: 0.5rem;
+    padding-right: 1rem;
   }
   @media ${({ theme }) => theme.mediaQueries.sm} {
     position: relative;
-    align-items: flex-start;
     padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 `;

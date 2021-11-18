@@ -25,6 +25,11 @@ export default {
       light: "#d4fbfe",
       dark: "#8dafb1",
     },
+    dark: {
+      main: "#1c2f2f",
+      light: "#213737",
+      dark: "#182828",
+    },
   },
 
   backGroundColor: {
@@ -53,5 +58,9 @@ export default {
 
   fontFamily: {
     main: "'Montserrat', sans-serif;",
+  },
+
+  boxShadow: {
+    card: "0 3px 10px rgb(0 0 0 / 0.2)",
   },
 };

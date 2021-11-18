@@ -10,8 +10,8 @@ export const SaleTag = styled.div`
   background-color: ${({ theme }) => theme.palette.highlight.main};
   transform: rotate(45deg);
 
-  top: 1.2rem;
-  right: -1.2rem;
+  top: 1.1rem;
+  right: -1.3rem;
 
   p {
     font-weight: 600;

@@ -6,11 +6,11 @@ export const ItemContainer = styled.div`
   flex-direction: column;
   width: 20rem;
   overflow: hidden;
-
   margin: ${({ theme }) => theme.spacing.small};
   padding: ${({ theme }) => theme.spacing.small};
   background-color: white;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
+  box-shadow: ${({ theme }) => theme.boxShadow.card};
 `;
 
 export const ItemTitle = styled.div`

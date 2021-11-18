@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { State } from "../../state/combinedReducers";
 
 import CartItem from "./CartItem/CartItem";
-import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
 
 import { IShopItems } from "../../interfaces/interfaces";
 
@@ -17,9 +16,9 @@ const CartItemsList = () => {
   return (
     <CartListContainer>
       <StickyContainer>
-        <ShoppingCartIcon cartItems={cartItems} />
-        {cartItems.length > 0 &&
-          cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
+        {cartItems.length > 0
+          ? cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
+          : "Cart is Empty!"}
       </StickyContainer>
     </CartListContainer>
   );

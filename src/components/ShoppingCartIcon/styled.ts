@@ -9,7 +9,10 @@ export const ShoppingCartIconContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.highlight.light};
   font-size: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius.small};
-  margin-top: ${({ theme }) => theme.spacing.small};
+
+  @media ${({ theme }) => theme.mediaQueries.sm} {
+    margin-right: 1rem;
+  }
 
   p {
     color: ${({ theme }) => theme.palette.secondary.dark};

@@ -4,6 +4,7 @@ import { getShopItems } from "../state/actions/shopItems";
 
 import ShopItemsList from "../components/ShopItemsList/ShopItemsList";
 import CartItemsList from "../components/CartItemsList/CartItemsList";
+import TopBar from "../components/TopBar/TopBar";
 
 import { MainContainer } from "./styled";
 
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
 
   return (
     <MainContainer>
+      <TopBar />
       <ShopItemsList />
       <CartItemsList />
     </MainContainer>
