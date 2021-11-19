@@ -8,10 +8,12 @@ import useDiscount from "../../../hooks/useDiscount";
 import Button from "../../Button/Button";
 import PopUp from "../../PopUp/PopUp";
 import OnSaleTag from "./OnSaleTag/OnSaleTag";
+import DiscountMenu from "./DiscountMenu/DiscountMenu";
+import PriceTag from "../../PriceTag/PriceTag";
 
 import { IShopItems } from "../../../interfaces/interfaces";
 
-import { ItemContainer, ImageContainer, ItemTitle, PriceTag } from "./styled";
+import { ItemContainer, ImageContainer, ItemTitle } from "./styled";
 
 type ShopItemProps = {
   shopItem: IShopItems;
@@ -39,11 +41,11 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
       <ItemTitle>
         <h5>{shopItem.title}</h5>
       </ItemTitle>
-      <PriceTag>{`${shopItem.price} €`}</PriceTag>
-      <PriceTag>
+      <PriceTag price={shopItem.price} />
+      {/* <PriceTag>
         {shopItem.discount.onSale &&
           `${shopItem.discount.discountedPrice.toFixed(2)} €`}
-      </PriceTag>
+      </PriceTag> */}
       <Button
         handleClick={() => {
           !isItemInCart && addToCartHandler(shopItem);
@@ -52,30 +54,13 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
         label={"Add"}
         type={"add"}
       />
-      <p>{shopItem.discount.discount}</p>
-      <p>{discountAmount}</p>
-      <button
-        onClick={() => {
-          setItemToSale();
-        }}
-      >
-        set discount
-      </button>
-      <button
-        onClick={() => {
-          removeItemFromSale();
-        }}
-      >
-        remove discount
-      </button>
-      <button onClick={() => setDiscountAmount(discountAmount + 1)}>+</button>
-      <button
-        onClick={() =>
-          discountAmount > 0 && setDiscountAmount(discountAmount - 1)
-        }
-      >
-        -
-      </button>
+      <DiscountMenu
+        shopItem={shopItem}
+        discountAmount={discountAmount}
+        setItemToSale={setItemToSale}
+        removeItemFromSale={removeItemFromSale}
+        setDiscountAmount={setDiscountAmount}
+      />
       <PopUp ref={showPopUpRef} message={"Item added to cart"} type={"add"} />
     </ItemContainer>
   );
