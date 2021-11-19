@@ -1,11 +1,12 @@
 import React from "react";
 
-import { IShopItems } from "../../../../../interfaces/interfaces";
+import IconButton from "../../../../IconButton/IconButton";
+import Button from "../../../../Button/Button";
 
-import { ActionsConstainer } from "./styled";
+import { ActionsConstainer, AmountContainer, ButtonsContainer } from "./styled";
 
 type DiscountMenuActionsProps = {
-  shopItem: IShopItems;
+  setMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
   discountAmount: number;
   setItemToSale: () => void;
   removeItemFromSale: () => void;
@@ -13,7 +14,7 @@ type DiscountMenuActionsProps = {
 };
 
 const DiscountMenuActions: React.FC<DiscountMenuActionsProps> = ({
-  shopItem,
+  setMenuActive,
   discountAmount,
   setItemToSale,
   removeItemFromSale,
@@ -21,30 +22,42 @@ const DiscountMenuActions: React.FC<DiscountMenuActionsProps> = ({
 }) => {
   return (
     <ActionsConstainer>
-      <p>{shopItem.discount.discount}</p>
-      <p>{discountAmount}</p>
-      <button
-        onClick={() => {
-          setItemToSale();
-        }}
-      >
-        set discount
-      </button>
-      <button
-        onClick={() => {
-          removeItemFromSale();
-        }}
-      >
-        remove discount
-      </button>
-      <button onClick={() => setDiscountAmount(discountAmount + 1)}>+</button>
-      <button
-        onClick={() =>
-          discountAmount > 0 && setDiscountAmount(discountAmount - 1)
-        }
-      >
-        -
-      </button>
+      <AmountContainer>
+        <IconButton
+          handleClick={() => setDiscountAmount(discountAmount - 1)}
+          type={"decrease"}
+          shape={"square"}
+        />
+        <p>{discountAmount}%</p>
+        <IconButton
+          handleClick={() => setDiscountAmount(discountAmount + 1)}
+          type={"increase"}
+          shape={"square"}
+        />
+      </AmountContainer>
+
+      <ButtonsContainer>
+        <Button
+          handleClick={() => {
+            setItemToSale();
+            setMenuActive(false);
+          }}
+          label={"Set discount"}
+          type={"add"}
+        >
+          set discount
+        </Button>
+        <Button
+          handleClick={() => {
+            removeItemFromSale();
+            setMenuActive(false);
+          }}
+          label={"Remove discount"}
+          type={"remove"}
+        >
+          remove discount
+        </Button>
+      </ButtonsContainer>
     </ActionsConstainer>
   );
 };

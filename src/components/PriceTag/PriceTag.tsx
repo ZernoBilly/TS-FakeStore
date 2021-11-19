@@ -1,16 +1,22 @@
 import React from "react";
 
-import { PriceTagContainer } from "./styled";
+import { PriceTagContainer, Price, DiscountedPrice } from "./styled";
 
 type PriceTagProps = {
-  price: number;
-  discountedPrice?: number;
+  price: number | boolean | string;
+  discountedPrice?: boolean | number | string;
+  fontSize: "small" | "medium";
 };
 
-const PriceTag: React.FC<PriceTagProps> = ({ price }) => {
+const PriceTag: React.FC<PriceTagProps> = ({
+  price,
+  discountedPrice,
+  fontSize,
+}) => {
   return (
     <PriceTagContainer>
-      <p>{price}</p>
+      <Price fontSize={fontSize}>{price} €</Price>
+      <DiscountedPrice>{discountedPrice}</DiscountedPrice>
     </PriceTagContainer>
   );
 };

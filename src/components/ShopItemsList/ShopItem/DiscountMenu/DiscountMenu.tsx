@@ -34,7 +34,7 @@ const DiscountMenu: React.FC<DiscountMenuProps> = ({
       </DiscountMenuButton>
       {menuActive && (
         <DiscountMenuActions
-          shopItem={shopItem}
+          setMenuActive={setMenuActive}
           discountAmount={discountAmount}
           setItemToSale={setItemToSale}
           removeItemFromSale={removeItemFromSale}

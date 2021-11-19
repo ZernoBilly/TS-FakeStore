@@ -33,7 +33,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
   return (
     <ItemContainer>
       {shopItem.discount.onSale && (
-        <OnSaleTag discountAmount={discountAmount} />
+        <OnSaleTag discountAmount={shopItem.discount.discount} />
       )}
       <ImageContainer>
         <img src={shopItem.image} alt={shopItem.title} />
@@ -41,11 +41,15 @@ const ShopItem: React.FC<ShopItemProps> = ({ shopItem }) => {
       <ItemTitle>
         <h5>{shopItem.title}</h5>
       </ItemTitle>
-      <PriceTag price={shopItem.price} />
-      {/* <PriceTag>
-        {shopItem.discount.onSale &&
-          `${shopItem.discount.discountedPrice.toFixed(2)} €`}
-      </PriceTag> */}
+      <PriceTag
+        price={shopItem.price}
+        discountedPrice={
+          shopItem.discount.onSale &&
+          shopItem.discount.discountedPrice.toFixed(2)
+        }
+        fontSize={"medium"}
+      />
+
       <Button
         handleClick={() => {
           !isItemInCart && addToCartHandler(shopItem);

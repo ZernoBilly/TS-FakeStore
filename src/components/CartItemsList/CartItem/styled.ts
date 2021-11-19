@@ -26,13 +26,8 @@ export const AmountContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-`;
-
-export const PriceTag = styled.p`
-  padding: 0 1rem 0 1rem;
-  margin: 0.5rem 0 0.8rem 0;
-  color: ${({ theme }) => theme.palette.secondary.dark};
-  font-weight: 600;
+  margin: 0;
+  padding: 0;
 `;
 
 export const PiecesTag = styled.p`

@@ -4,7 +4,7 @@ import { PopUpContainer, PopUpText } from "./styled";
 
 type PopUpProps = {
   message: string;
-  type: string;
+  type: "add" | "remove";
 };
 
 const PopUp = forwardRef<PopUpProps, any>(({ message, type }, ref: any) => {
@@ -15,7 +15,7 @@ const PopUp = forwardRef<PopUpProps, any>(({ message, type }, ref: any) => {
       setShowPopUp(true);
       setTimeout(() => {
         setShowPopUp(false);
-      }, 3000);
+      }, 2000);
     },
   }));
 

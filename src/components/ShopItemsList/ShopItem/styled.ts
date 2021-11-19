@@ -16,7 +16,7 @@ export const ItemContainer = styled.div`
 export const ItemTitle = styled.div`
   height: 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding-top: ${({ theme }) => theme.spacing.medium};
 
